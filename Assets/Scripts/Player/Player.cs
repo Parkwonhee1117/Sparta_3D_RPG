@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [field: SerializeField] public PlayerSO Data { get; private set; }
+
+    [Header("TargetLocation")]
+    public Transform Target;
+
+
+    [field: Header("Animations")]
+    [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
+
+    public UnityEngine.AI.NavMeshAgent Agent {get; private set;}
+
+    public Animator Animator { get; private set; }
+    private PlayerStateMachine stateMachine;
+
+    void Awake()
     {
-        
+        AnimationData.Initialize();
+        Animator = GetComponentInChildren<Animator>();
+        Agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        stateMachine = new PlayerStateMachine(this);
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        stateMachine.ChangeState(stateMachine.WalkState);
+    }
+
     void Update()
     {
-        
+        stateMachine.Update();
     }
 }

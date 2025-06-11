@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
+
     public Player Player {get;}
 
     public float MovementSpeed {get; private set;}
@@ -16,4 +17,14 @@ public class PlayerStateMachine : StateMachine
     public PlayerIdleState IdleState { get; private set; }
     public PlayerWalkState WalkState { get; private set; }
 
+    public PlayerStateMachine(Player player)
+    {
+        Player = player;
+
+        IdleState = new PlayerIdleState(this);
+        WalkState = new PlayerWalkState(this);
+
+        MovementSpeed = player.Data.GroundData.BaseSpeed;
+        RotationDamping = player.Data.GroundData.BaseRotationDamping;
+    }
 }

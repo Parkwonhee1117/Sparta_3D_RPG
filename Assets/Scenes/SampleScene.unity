@@ -237,7 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 218850776}
-  - component: {fileID: 218850778}
+  - component: {fileID: 218850779}
   - component: {fileID: 218850777}
   m_Layer: 0
   m_Name: Player
@@ -285,7 +285,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &218850778
+--- !u!114 &218850779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,10 +294,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 218850775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae518e38e64821b4eb6085fb39c1cad2, type: 3}
+  m_Script: {fileID: 11500000, guid: 672d16f3ccc258947aaf7bbb04742ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1402072357}
+  <Data>k__BackingField: {fileID: 11400000, guid: 497dff6013a9734468b256c8d4da25c6,
+    type: 2}
+  Target: {fileID: 1402072357}
+  <AnimationData>k__BackingField:
+    groundParameterName: '@Ground'
+    idleParameterName: Idle
+    walkParameterName: Walk
+    attackParameterName: '@Attack'
+    comboAttackParameterName: ComboAttack
+    baseAttackParameterName: BaseAttack
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +914,7 @@ GameObject:
   - component: {fileID: 1402072357}
   - component: {fileID: 1402072356}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TargetLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,23 +7,37 @@ public class PlayerBaseState : IState
     protected PlayerStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
 
-    public void Enter()
+    public PlayerBaseState(PlayerStateMachine stateMachine)
     {
-        throw new System.NotImplementedException();
+        this.stateMachine = stateMachine;
+        groundData = stateMachine.Player.Data.GroundData;
     }
 
-    public void Exit()
+    public virtual void Enter()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    public void PhysicsUpdate()
+    public virtual void Exit()
     {
-        throw new System.NotImplementedException();
     }
 
-    public void Update()
+    public virtual void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+    }
+
+    public virtual void Update()
+    {
+    }
+
+    
+    protected void StartAnimation(int animatorHash)
+    {
+        stateMachine.Player.Animator.SetBool(animatorHash, true);
+    }
+
+    protected void StopAnimation(int animatorHash)
+    {
+        stateMachine.Player.Animator.SetBool(animatorHash, false);
     }
 }

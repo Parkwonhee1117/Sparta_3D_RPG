@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerGroundState
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerIdleState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        stateMachine.MovementSpeedModifier = 0f;
+        base.Enter();
+        StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
+
+    public override void Exit()
+    {
+        base.Exit();
+        StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        // 만약 시작 버튼 누른다면
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.ChangeState(stateMachine.WalkState);    
+            return;
+        }
+    }
+
 }
