@@ -14,9 +14,11 @@ public class PlayerWalkState : PlayerGroundState
 
     public override void Enter()
     {
-        Initialize();
 
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+
+        Initialize();
+        
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
     }

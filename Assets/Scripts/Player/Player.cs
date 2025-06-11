@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        stateMachine.ChangeState(stateMachine.WalkState);
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     void Update()

@@ -23,6 +23,5 @@ public class PlayerGroundState : PlayerBaseState
     public override void Update()
     {
         base.Update();
-        stateMachine.ChangeState(stateMachine.IdleState);
     }
 }
